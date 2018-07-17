@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+    <head>
+    <style>
+
+            .chart div {
+                font: 10px sans-serif;
+                background-color: steelblue;
+                text-align: right;
+                padding: 3px;
+                margin: 1px;
+                color: white;
+            }
+            
+    </style>
+        <script src="ui/jquery/dist/jquery.min.js"></script>
+        <script src="ui/d3/build/d3.min.js"></script>
+        <h3>This is head</h3>
+    </head>
+    <body>
+        <h3>This is body</h3>
+        <section> I am section not div</section>
+        <div class='chart'></div>
+
+        <script>
+            var data = [4, 8, 15, 16, 23, 42];
+            var div = document.createElement("div");
+            div.innerHTML = "Hello, world!";
+            document.body.appendChild(div);
+
+            var body = d3.select("body");
+            var div = body.append("div");
+            div.html("Hello, world! New");
+
+            var body = d3.select("body");
+            body.style("color", "white");
+            body.style("background-color", "#9b9692");
+
+            var body = d3.select("section");
+            body.style("color", "black");
+            body.style("background-color", "white");
+
+            d3.select(".chart")
+                .selectAll("div")
+                .data(data)
+                .enter().append("div")
+                .style("width", function(d) { return d * 10 + "px"; })
+                .text(function(d) { return d; });
+
+
+        </script>
+
+        
+    </body>
+</html>
